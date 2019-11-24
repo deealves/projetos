@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 /**
  *
- * @author Allyson
+ * @author Dennys Alves
  */
 public class MensagensUtil {
     

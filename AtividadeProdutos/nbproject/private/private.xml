@@ -2,6 +2,19 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/F:/Users/Dennys/Documents/NetBeansProjects/AtividadeProdutos/src/br/com/map/projeto_produtos/properties/conf.properties</file>
+            <file>file:/F:/Users/Dennys/Documents/NetBeansProjects/AtividadeProdutos/src/br/com/map/projeto_produtos/util/ConnectionFactory.java</file>
+            <file>file:/F:/Users/Dennys/Documents/NetBeansProjects/AtividadeProdutos/src/br/com/map/projeto_produtos/gui/ProdutosJframe.java</file>
+            <file>file:/F:/Users/Dennys/Documents/NetBeansProjects/AtividadeProdutos/src/br/com/map/projeto_produtos/util/ConfUtil.java</file>
+            <file>file:/F:/Users/Dennys/Documents/NetBeansProjects/AtividadeProdutos/src/br/com/map/projeto_produtos/dao/ProdutoDao.java</file>
+            <file>file:/F:/Users/Dennys/Documents/NetBeansProjects/AtividadeProdutos/src/br/com/map/projeto_produtos/properties/mensagens_en_US.properties</file>
+            <file>file:/F:/Users/Dennys/Documents/NetBeansProjects/AtividadeProdutos/src/br/com/map/projeto_produtos/util/MensagensUtil.java</file>
+            <file>file:/F:/Users/Dennys/Documents/NetBeansProjects/AtividadeProdutos/src/br/com/map/projeto_produtos/model/Especificacao.java</file>
+            <file>file:/F:/Users/Dennys/Documents/NetBeansProjects/AtividadeProdutos/src/br/com/map/projeto_produtos/properties/mensagens_pt_BR.properties</file>
+            <file>file:/F:/Users/Dennys/Documents/NetBeansProjects/AtividadeProdutos/src/br/com/map/projeto_produtos/gui/AtividadeProdutos.java</file>
+            <file>file:/F:/Users/Dennys/Documents/NetBeansProjects/AtividadeProdutos/src/br/com/map/projeto_produtos/gui/ProdutoJFrame.java</file>
+            <file>file:/F:/Users/Dennys/Documents/NetBeansProjects/AtividadeProdutos/src/br/com/map/projeto_produtos/model/Produto.java</file>
+        </group>
     </open-files>
 </project-private>
