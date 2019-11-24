@@ -14,7 +14,6 @@ import java.util.ResourceBundle;
 public class ConfUtil {
     
     private static final ResourceBundle bundle = ResourceBundle.getBundle("conf");
-
     public static final String CONF_JDBC_URL = "conf.jdbc.url";
     public static final String CONF_JDBC_USUARIO = "conf.jdbc.usuario";
     public static final String CONF_JDBC_SENHA = "conf.jdbc.senha";

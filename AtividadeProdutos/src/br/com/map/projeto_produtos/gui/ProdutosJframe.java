@@ -7,6 +7,7 @@ package br.com.map.projeto_produtos.gui;
 
 import br.com.map.projeto_produtos.dao.ProdutoDao;
 import br.com.map.projeto_produtos.model.Produto;
+import br.com.map.projeto_produtos.util.MensagensUtil;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -32,6 +33,16 @@ public class ProdutosJframe extends javax.swing.JFrame {
         preencherTabela(null);
         
     }
+    
+        private void setProperties(){
+        jMenu1.setText(MensagensUtil.getString("msg.menu.idioma"));
+        LabelProdutos.setText(MensagensUtil.getString(MensagensUtil.MSG_LABEL_TITULO));
+        ButtonNovo.setText(MensagensUtil.getString(MensagensUtil.MSG_BUTTON_NOVO));
+        ButtonEditar.setText(MensagensUtil.getString(MensagensUtil.MSG_BUTTON_EDITAR));
+        ButtonExcluir.setText(MensagensUtil.getString(MensagensUtil.MSG_BUTTON_EXCLUIR));
+        ButtonSair.setText(MensagensUtil.getString(MensagensUtil.MSG_BUTTON_SAIR));
+        preencherTabela(null);
+    }
     public void preencherTabela( List<Produto> lista) 
     {
        try{
@@ -40,7 +51,14 @@ public class ProdutosJframe extends javax.swing.JFrame {
         DefaultTableModel model = new DefaultTableModel();
         
         model.setColumnCount(7);
-        model.setColumnIdentifiers(new String[]{"Código", "Nome", "Valor", "Marca", "Sist. Ope.", "Cor", "Detalhes"});
+        model.setColumnIdentifiers(new String[]{ 
+            MensagensUtil.getString(MensagensUtil.MSG_TABELA_CODIGO),
+            MensagensUtil.getString(MensagensUtil.MSG_TABELA_NOME),
+            MensagensUtil.getString(MensagensUtil.MSG_TABELA_VALOR),
+            MensagensUtil.getString(MensagensUtil.MSG_TABELA_MARCA), 
+            MensagensUtil.getString(MensagensUtil.MSG_TABELA_SO),
+            MensagensUtil.getString(MensagensUtil.MSG_TABELA_COR), 
+            MensagensUtil.getString(MensagensUtil.MSG_TABELA_DETALHES)});
         model.setRowCount(produtos.size());
         
         for( int i = 0; i < produtos.size(); i++){
@@ -81,6 +99,11 @@ public class ProdutosJframe extends javax.swing.JFrame {
         ButtonSair = new javax.swing.JButton();
         TextBuscar = new javax.swing.JTextField();
         LabelBuscar = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,6 +171,36 @@ public class ProdutosJframe extends javax.swing.JFrame {
 
         LabelBuscar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         LabelBuscar.setText("Buscar :");
+
+        jMenu1.setText("Idioma");
+
+        jMenuItem2.setText("pt_BR");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem1.setText("es_ES");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem3.setText("en_US");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -258,6 +311,21 @@ public class ProdutosJframe extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ButtonEditarActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+         MensagensUtil.setLocale(MensagensUtil.LOCALE_ES_ES);
+        setProperties();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+         MensagensUtil.setLocale(MensagensUtil.LOCALE_PT_BR);
+        setProperties();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+         MensagensUtil.setLocale(MensagensUtil.LOCALE_EN_US);
+        setProperties();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
   
     public static void main(String args[]) {
 
@@ -278,6 +346,11 @@ public class ProdutosJframe extends javax.swing.JFrame {
     private javax.swing.JLabel LabelProdutos;
     private javax.swing.JTable TableProdutos;
     private javax.swing.JTextField TextBuscar;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
