@@ -21,23 +21,22 @@ public class ProdutoJFrame extends javax.swing.JFrame {
 
     private ProdutoDao dao ;
     private ProdutosJframe parent ;
-    private Produto produto;
+    private Produto produto ;
      
     
     public ProdutoJFrame(ProdutosJframe parent, Produto produto) {
         this.parent = parent; 
         this.produto = produto;
-        this.setTitle(MensagensUtil.MSG_LABEL_NOVO_TITULO);
         this.dao = new ProdutoDao();
         initComponents();
-       this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-       preencherCampos();
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        preencherCampos();
     }
 
      private void preencherCampos(){
      
          if(produto!= null){
-             this.LabelTitulo.setText(MensagensUtil.MSG_LABEL_EDITAR_TITULO );
+             LabelTitulo.setText(MensagensUtil.getString(MensagensUtil.MSG_LABEL_EDITAR_TITULO));
              this.TextNome.setText(produto.getNome_produto());
              this.TextValor.setText(String.valueOf(produto.getPreco_produto()));
              this.TextMarca.setText(produto.getEspecificacao().getMarca());
@@ -46,7 +45,14 @@ public class ProdutoJFrame extends javax.swing.JFrame {
              this.TextDetalhes.setText(produto.getEspecificacao().getDetalhes());
          }
          else
-             this.LabelTitulo.setText(MensagensUtil.MSG_LABEL_NOVO_TITULO);
+             LabelTitulo.setText(MensagensUtil.getString(MensagensUtil.MSG_LABEL_NOVO_TITULO));
+             LabelNome.setText(MensagensUtil.getString(MensagensUtil.MSG_LABEL_NOME));
+             LabelValor.setText(MensagensUtil.getString(MensagensUtil.MSG_LABEL_PRECO));
+             LabelMarca.setText(MensagensUtil.getString(MensagensUtil.MSG_TABELA_MARCA));
+             LabelCor.setText(MensagensUtil.getString(MensagensUtil.MSG_TABELA_COR));
+             LabelDetalhes.setText(MensagensUtil.getString(MensagensUtil.MSG_TABELA_DETALHES));        
+                     
+                     
      }
 
     @SuppressWarnings("unchecked")
@@ -76,6 +82,12 @@ public class ProdutoJFrame extends javax.swing.JFrame {
         LabelTitulo.setText("CADASTRAR PRODUTO");
 
         LabelNome.setText("NOME");
+
+        TextNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextNomeActionPerformed(evt);
+            }
+        });
 
         LabelValor.setText("VALOR");
 
@@ -228,6 +240,10 @@ public class ProdutoJFrame extends javax.swing.JFrame {
         
         dispose();
     }//GEN-LAST:event_ButtonSalvarActionPerformed
+
+    private void TextNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextNomeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

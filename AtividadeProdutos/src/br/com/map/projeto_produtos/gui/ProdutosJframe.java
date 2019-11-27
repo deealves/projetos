@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -22,20 +23,17 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ProdutosJframe extends javax.swing.JFrame {
 
-     private ProdutoDao dao;
+     private ProdutoDao dao= new ProdutoDao();;
      private Produto produtoSelecionado;
     
     public ProdutosJframe()  {
        
         this.setTitle("Produtos");
-        dao = new ProdutoDao();
         initComponents();
-        preencherTabela(null);
-        
     }
     
         private void setProperties(){
-        jMenu1.setText(MensagensUtil.getString("msg.menu.idioma"));
+        jMenu1.setText(MensagensUtil.getString(MensagensUtil.MSG_IDIOMA));
         LabelProdutos.setText(MensagensUtil.getString(MensagensUtil.MSG_LABEL_TITULO));
         ButtonNovo.setText(MensagensUtil.getString(MensagensUtil.MSG_BUTTON_NOVO));
         ButtonEditar.setText(MensagensUtil.getString(MensagensUtil.MSG_BUTTON_EDITAR));
@@ -52,12 +50,9 @@ public class ProdutosJframe extends javax.swing.JFrame {
         
         model.setColumnCount(7);
         model.setColumnIdentifiers(new String[]{ 
-            MensagensUtil.getString(MensagensUtil.MSG_TABELA_CODIGO),
             MensagensUtil.getString(MensagensUtil.MSG_TABELA_NOME),
             MensagensUtil.getString(MensagensUtil.MSG_TABELA_VALOR),
             MensagensUtil.getString(MensagensUtil.MSG_TABELA_MARCA), 
-            MensagensUtil.getString(MensagensUtil.MSG_TABELA_SO),
-            MensagensUtil.getString(MensagensUtil.MSG_TABELA_COR), 
             MensagensUtil.getString(MensagensUtil.MSG_TABELA_DETALHES)});
         model.setRowCount(produtos.size());
         
@@ -163,6 +158,11 @@ public class ProdutosJframe extends javax.swing.JFrame {
             }
         });
 
+        TextBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextBuscarActionPerformed(evt);
+            }
+        });
         TextBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 TextBuscarKeyReleased(evt);
@@ -258,6 +258,7 @@ public class ProdutosJframe extends javax.swing.JFrame {
     private void ButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNovoActionPerformed
 
         ProdutoJFrame janela = new ProdutoJFrame(this, null);
+        janela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         janela.setVisible(true);
     }//GEN-LAST:event_ButtonNovoActionPerformed
 
@@ -305,7 +306,7 @@ public class ProdutosJframe extends javax.swing.JFrame {
     private void ButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarActionPerformed
         
         if(produtoSelecionado!=null){
-            ProdutoJFrame janela = new ProdutoJFrame(this, produtoSelecionado);
+            ProdutoJFrame janela = new ProdutoJFrame(this,null);
             janela.setVisible(true);
             
         }
@@ -325,6 +326,10 @@ public class ProdutosJframe extends javax.swing.JFrame {
          MensagensUtil.setLocale(MensagensUtil.LOCALE_EN_US);
         setProperties();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void TextBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextBuscarActionPerformed
 
   
     public static void main(String args[]) {
