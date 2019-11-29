@@ -12,7 +12,7 @@ package br.com.map.projeto_produtos.model;
 public class Produto {
     
     private String nome_produto;
-    private float preco_produto;
+    private double preco_produto;
     private int codigo;
     private Especificacao especificacao;
 
@@ -27,8 +27,22 @@ public class Produto {
     public void setEspecificacao(Especificacao especificacao) {
         this.especificacao = especificacao;
     }
-
-   
+    
+    public String getDetalhes() {
+        return especificacao.getDetalhes();
+    }
+    
+      public String getMarca() {
+        return especificacao.getMarca();
+    }
+      
+      public String getSistemaOpe() {
+        return especificacao.getSistemaOpe();
+    }
+      public String getCor() {
+        return especificacao.getCor();
+    }
+      
     public String getNome_produto() {
         return nome_produto;
     }
@@ -37,11 +51,11 @@ public class Produto {
         this.nome_produto = nome_produto;
     }
 
-    public float getPreco_produto() {
+    public double getPreco_produto() {
         return preco_produto;
     }
 
-    public void setPreco_produto(float preco_produto) {
+    public void setPreco_produto(double preco_produto) {
         this.preco_produto = preco_produto;
     }
 

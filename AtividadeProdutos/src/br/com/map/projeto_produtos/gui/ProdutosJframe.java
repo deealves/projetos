@@ -8,6 +8,7 @@ package br.com.map.projeto_produtos.gui;
 import br.com.map.projeto_produtos.dao.ProdutoDao;
 import br.com.map.projeto_produtos.model.Produto;
 import br.com.map.projeto_produtos.util.MensagensUtil;
+import br.com.map.projeto_produtos.util.RelatorioManager;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,6 +17,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.swing.JRViewer;
 
 /**
  *
@@ -85,6 +88,9 @@ public class ProdutosJframe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
         LabelProdutos = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableProdutos = new javax.swing.JTable();
@@ -99,6 +105,15 @@ public class ProdutosJframe extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+
+        jMenu2.setText("File");
+        jMenuBar2.add(jMenu2);
+
+        jMenu3.setText("Edit");
+        jMenuBar2.add(jMenu3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -199,6 +214,26 @@ public class ProdutosJframe extends javax.swing.JFrame {
         jMenu1.add(jMenuItem3);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu4.setText("Relatorio");
+
+        jMenuItem4.setText("Lista de Produtos");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem4);
+
+        jMenuItem5.setText("Lista de Produtos por Preço");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -331,6 +366,38 @@ public class ProdutosJframe extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TextBuscarActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+      try {
+            // TODO add your handling code here:
+            String titrel = "Relatório de Produtos por Preço";
+            Double preco_produto = null ;
+            JasperPrint relatorio = RelatorioManager.gerarRelatorioProdutos(dao.listar(preco_produto));
+            JFrame frame = new JFrame();
+            frame.setSize(1000, 800);
+            JRViewer viewer = new JRViewer(relatorio);
+            frame.add(viewer);
+            frame.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(ProdutoJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+         // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            JasperPrint relatorio = RelatorioManager.gerarRelatorioProdutos(dao.listar());
+            String titrel = "Relatório";
+            JFrame frame = new JFrame();
+            frame.setSize(1000, 800);
+            JRViewer viewer = new JRViewer(relatorio);
+            frame.add(viewer);
+            frame.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(ProdutoJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
   
     public static void main(String args[]) {
 
@@ -352,10 +419,16 @@ public class ProdutosJframe extends javax.swing.JFrame {
     private javax.swing.JTable TableProdutos;
     private javax.swing.JTextField TextBuscar;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

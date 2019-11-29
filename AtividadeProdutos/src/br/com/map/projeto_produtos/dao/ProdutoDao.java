@@ -5,6 +5,7 @@
  */
 package br.com.map.projeto_produtos.dao;
 
+import br.com.map.projeto_produtos.model.Especificacao;
 import br.com.map.projeto_produtos.model.Produto;
 import br.com.map.projeto_produtos.util.ConnectionFactory;
 import java.sql.Connection;
@@ -57,7 +58,7 @@ public class ProdutoDao {
         st = con.prepareStatement(sql);
                         
         st.setString(1, produto.getNome_produto());
-        st.setFloat(2, produto.getPreco_produto());
+        st.setDouble(2, produto.getPreco_produto());
         st.setInt(3, codigoEndereco);
                         
         st.executeUpdate();
@@ -70,7 +71,7 @@ public class ProdutoDao {
         con = ConnectionFactory.getConnection();
         st = con.prepareStatement(sql);
         st.setString(1, produto.getNome_produto());
-        st.setFloat(2, produto.getPreco_produto());
+        st.setDouble(2, produto.getPreco_produto());
         st.setInt(3, produto.getCodigo());
         st.executeUpdate();
         
@@ -157,6 +158,34 @@ public class ProdutoDao {
         return list;
     }
     
+     public List<Produto> listar(Double preco_produto) throws Exception {
+        sql = "select p.*, e.* from produtos p, especificacoes e where p.especificacao = e.codigo and p.preco_produto > 1000 ";
+        
+        con = ConnectionFactory.getConnection();
+        st = con.prepareStatement(sql);
+        ResultSet rs = st.executeQuery();
+        
+        List<Produto> produtos = new ArrayList<>();
+        while (rs.next()) {
+            
+            Produto p = new Produto();
+            p.setEspecificacao(new Especificacao());
+            
+            p.setCodigo(rs.getInt("codigo"));
+            p.setNome_produto(rs.getString("nome"));
+            p.setPreco_produto(rs.getDouble("preco"));
+
+            p.getEspecificacao().setCodigo(rs.getInt("especificacao"));
+            p.getEspecificacao().setMarca(rs.getString("marca"));
+            p.getEspecificacao().setCor(rs.getString("cor"));
+            p.getEspecificacao().setSistemaOpe(rs.getString("sistema"));
+            p.getEspecificacao().setDetalhes(rs.getString("detalhes"));
+
+            produtos.add(p);
+        }
+        con.close();
+        return produtos;
+    }
     public Produto buscarPorCodigo(int codigo) throws SQLException{
        sql= "select p.*, c.* "
                 + "from produtos p , caracteristicas c "

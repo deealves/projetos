@@ -49,6 +49,10 @@ public class MensagensUtil {
     public static final String MSG_IDIOMA_PT_BR = "msg.idioma.pt.br";
     public static final String MSG_IDIOMA_EN_US = "msg.idioma.en.us";
     public static final String MSG_IDIOMA_ES_ES = "msg.idioma.es.es";
+    public static final String MSG_RELATORIO = "menu.relatorio";
+    public static final String MSG_RELATORIO_LISTA_PRODUTO = "menu.relatorio.lista.produto";
+    public static final String MSG_RELATORIO_LISTA_PRODUTO_PRECO = "menu.relatorio.lista.produto.preco";
+    public static final String MSG_RELATORIO_PRECO_REFERENCIA = "msg.relatorio.preco.referencia";
     
     public static String getString(String key){
         return bundle.getString(key);
