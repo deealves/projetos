@@ -370,8 +370,7 @@ public class ProdutosJframe extends javax.swing.JFrame {
       try {
             // TODO add your handling code here:
             String titrel = "Relatório de Produtos por Preço";
-            Double preco_produto = null ;
-            JasperPrint relatorio = RelatorioManager.gerarRelatorioProdutos(dao.listar(preco_produto));
+            JasperPrint relatorio = RelatorioManager.gerarRelatorioProdutos(dao.listar1());
             JFrame frame = new JFrame();
             frame.setSize(1000, 800);
             JRViewer viewer = new JRViewer(relatorio);

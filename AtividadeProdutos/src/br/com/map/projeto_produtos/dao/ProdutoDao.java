@@ -136,7 +136,7 @@ public class ProdutoDao {
            
             int codigo = rs.getInt("codigo");
             String nome = rs.getString(2);
-            float preco = rs.getFloat(3);
+            double preco = rs.getDouble(3);
             int codigo_caract = rs.getInt(4);
             String marca = rs.getString(6);
             String sistema_op = rs.getString(7);
@@ -158,8 +158,8 @@ public class ProdutoDao {
         return list;
     }
     
-     public List<Produto> listar(Double preco_produto) throws Exception {
-        sql = "select p.*, e.* from produtos p, especificacoes e where p.especificacao = e.codigo and p.preco_produto > 1000 ";
+     public List<Produto> listar1() throws Exception {
+        sql = "select * from produto where produto.preco_produto > 1000";
         
         con = ConnectionFactory.getConnection();
         st = con.prepareStatement(sql);
@@ -175,11 +175,6 @@ public class ProdutoDao {
             p.setNome_produto(rs.getString("nome"));
             p.setPreco_produto(rs.getDouble("preco"));
 
-            p.getEspecificacao().setCodigo(rs.getInt("especificacao"));
-            p.getEspecificacao().setMarca(rs.getString("marca"));
-            p.getEspecificacao().setCor(rs.getString("cor"));
-            p.getEspecificacao().setSistemaOpe(rs.getString("sistema"));
-            p.getEspecificacao().setDetalhes(rs.getString("detalhes"));
 
             produtos.add(p);
         }
